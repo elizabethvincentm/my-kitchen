@@ -1,0 +1,46 @@
+#login-page {
+  font-family: "Roboto", sans-serif;
+  font-size: 20px;
+  position: relative;
+  display: flex;
+  margin: 0;
+  padding: 0;
+  justify-content: center;
+  height: 100vh;
+  align-items: center;
+  #login-block {
+    display: flex;
+    height: 60vh;
+    width: 100%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    .labels {
+      display: inline-block;
+      font-size: 1.3rem;
+      // padding: 1em;
+      width: 40%;
+      text-align: right;
+    }
+    .inputs {
+      display: inline-block;
+      // padding: 1em;
+      width: 40%;
+      text-align: left;
+      input {
+        height: 2rem;
+        border-radius: 2px;
+        border: 1px solid black;
+      }
+    }
+    div {
+      padding: 0.5em;
+    }
+  }
+}
+.footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+}
