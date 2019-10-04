@@ -1,0 +1,46 @@
+#login-page {
+  font-family: "Roboto", sans-serif;
+  font-size: 20px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+  justify-content: center;
+  height: 100vh;
+  width: 80%;
+  align-items: center;
+
+  font-size: 1.3rem;
+  .inputs {
+    padding: 0.3em;
+    margin: 0.5em;
+    width: 300px;
+    input {
+      height: 1.5rem;
+      width: 100%;
+      border-radius: 2px;
+      border: 1px solid black;
+    }
+  }
+  .buttons {
+    width: 150px;
+  }
+  #login-btn {
+    width: 300px;
+  }
+}
+
+.buttons {
+  font-size: 1.1rem;
+  margin: 0.3em;
+  border-radius: 2px;
+  height: 1.8rem;
+  border: 1px solid black;
+}
+.footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+}

@@ -1,0 +1,76 @@
+#homepage {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  position: relative;
+}
+#homepage .header {
+  background: grey;
+  position: fixed;
+  top: 2rem;
+  width: 100%;
+}
+#homepage #home-btns {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 10px;
+  display: flex;
+  justify-content: space-evenly;
+}
+#homepage #home-navbar {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: black;
+}
+#homepage #home-navbar #searchbar {
+  width: 40%;
+  height: 1.5rem;
+  margin: 10px;
+  padding: 0.2em;
+  line-height: 1.5rem;
+  border-radius: 5px;
+}
+#homepage #home-navbar #recipe-settings {
+  display: flex;
+  justify-content: space-evenly;
+  margin: 10px;
+}
+#homepage #display-recipes {
+  background: green;
+  width: 100%;
+  margin-top: 10vh;
+  display: flex;
+  justify-content: center;
+}
+#homepage #display-recipes #recipe-list {
+  padding-bottom: 1em;
+  width: 95%;
+  list-style: none;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-wrap: wrap;
+  overflow: auto;
+}
+#homepage #display-recipes #recipe-list li {
+  width: 300px;
+  height: 300px;
+  border-radius: 5px;
+  text-align: center;
+  margin: 1em;
+}
+#homepage #display-recipes #recipe-list li .recipe-link {
+  width: 300px;
+  height: 300px;
+  border-radius: 5px;
+  background: white;
+  margin: 1em 1em 0 0;
+  display: block;
+}
+
+/*# sourceMappingURL=home.css.map */

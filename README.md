@@ -1,3 +1,1 @@
-# recipe-diary
-
-recipe diary app
+# my-kitchen app

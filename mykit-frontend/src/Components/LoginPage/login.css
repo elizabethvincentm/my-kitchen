@@ -1,0 +1,51 @@
+#login-page {
+  position: absolute;
+  margin: 20vh 30vw;
+  width: 40vw;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#login-page .navbar {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+#login-page .navbar .nav-link {
+  width: 50%;
+  text-align: center;
+  padding: 1rem;
+  border: 1px solid black;
+}
+#login-page #login-nav-link,
+#login-page .login-form {
+  background: yellow;
+}
+#login-page #signup-nav-link,
+#login-page .signup-form {
+  background: orange;
+}
+#login-page .form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 3em 0;
+  width: 100%;
+}
+#login-page .form input {
+  font-size: 1.1rem;
+  margin: 0.3em;
+  border-radius: 5px;
+  height: 1.8rem;
+  border: 1px solid black;
+  width: 300px;
+  padding: 0 0.15rem;
+}
+#login-page .buttons {
+  width: 300px;
+  padding: 0.3rem;
+}
+
+/*# sourceMappingURL=login.css.map */
