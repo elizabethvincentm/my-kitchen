@@ -3,6 +3,21 @@ import "./login.css";
 import "../../index.css";
 import { Link } from "react-router-dom";
 
+const setActiveStyle=(form)=>{
+ // console.log(form);
+  let curLink=document.querySelector('.active-link');  
+  let nxtLink=document.getElementById(form+'-nav-link');
+  console.log(nxtLink);
+ 
+  if(nxtLink!==curLink){
+    curLink.classList.remove('active-link');
+    
+    nxtLink.classList.add('active-link');
+    
+  }
+  
+}
+
 class Login extends React.Component {
   constructor(props) {
     super(props);
@@ -47,6 +62,8 @@ class Login extends React.Component {
     alert("My Kitchen created successfully!");
   }
   changeForm(formType) {
+   
+    setActiveStyle(formType);
     this.setState({
       formType: formType
     });
@@ -85,9 +102,9 @@ class Login extends React.Component {
             onChange={this.onChangePassword}
           />
           <Link className="links" to="/home">
-            <div className="buttons" type="submit">
+            <button className="buttons" type="submit">
               Login
-            </div>
+            </button>
           </Link>
         </form>
       );
@@ -122,27 +139,30 @@ class Login extends React.Component {
   render() {
     return (
       <div id="login-page">
+        <div className="form-block">
         <nav className="navbar">
           <div
-            className="nav-link"
+            className="nav-link active-link"
             id="login-nav-link"
             onClick={() => {
               this.changeForm("login");
             }}
           >
-            Login to My Kitchen
+            Login to<span className="app-logo">MyKitchen</span>
           </div>
           <div
             className="nav-link"
             id="signup-nav-link"
             onClick={() => {
-              this.changeForm("create");
+              this.changeForm("signup");
             }}
           >
-            Create My Kitchen
+            Create<span className="app-logo">MyKitchen</span>
           </div>
         </nav>
         {this.displayForm()}
+        </div>
+        
       </div>
     );
   }

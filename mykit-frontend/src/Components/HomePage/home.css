@@ -1,55 +1,63 @@
+.buttons {
+  background: #457202;
+  color: #F2DAD5;
+  box-shadow: 0 2px 3px #5e5e5e;
+  height: 2rem;
+  border: none;
+}
+.buttons .links {
+  color: #F2DAD5;
+}
+
 #homepage {
   margin: 0;
   padding: 0;
-  height: 100vh;
-  position: relative;
-}
-#homepage .header {
-  background: grey;
-  position: fixed;
-  top: 2rem;
+  height: 100%;
   width: 100%;
 }
-#homepage #home-btns {
-  position: absolute;
+#homepage #home-navbar {
+  position: fixed;
   top: 0;
-  right: 0;
-  padding: 10px;
+  width: 100%;
+  background-image: linear-gradient(to right, #c1dfc4 0%, #deecdd 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+}
+#homepage #home-navbar #home-nav-btns {
+  width: 80%;
+  padding: 0.5rem;
+  display: flex;
+  justify-content: flex-end;
+}
+#homepage #home-navbar #recipes-toolbar {
+  margin-bottom: 0.5rem;
+  background: whitesmoke;
+  width: 100%;
   display: flex;
   justify-content: space-evenly;
 }
-#homepage #home-navbar {
-  position: absolute;
-  top: 0;
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: black;
-}
-#homepage #home-navbar #searchbar {
-  width: 40%;
+#homepage #home-navbar #recipes-toolbar #searchbar {
+  width: 50%;
   height: 1.5rem;
   margin: 10px;
-  padding: 0.2em;
+  padding: 0.1em;
   line-height: 1.5rem;
   border-radius: 5px;
 }
-#homepage #home-navbar #recipe-settings {
-  display: flex;
-  justify-content: space-evenly;
-  margin: 10px;
-}
 #homepage #display-recipes {
-  background: green;
   width: 100%;
-  margin-top: 10vh;
+  margin-top: 7rem;
   display: flex;
+  flex-direction: column;
   justify-content: center;
 }
 #homepage #display-recipes #recipe-list {
   padding-bottom: 1em;
   width: 95%;
+  height: 70%;
+  overflow: auto;
   list-style: none;
   display: flex;
   justify-content: space-evenly;

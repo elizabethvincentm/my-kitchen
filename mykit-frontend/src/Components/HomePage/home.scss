@@ -1,57 +1,73 @@
+.buttons{
+  background: #457202;
+  color:#F2DAD5;
+  box-shadow:0 2px 3px rgb(94, 94, 94);
+  height:2rem;
+  border:none;
+  //line-height:1.5rem;
+  .links{
+    color:#F2DAD5;
+  }
+}
 #homepage {
   margin: 0;
   padding: 0;
-  height: 100vh;
-  position: relative;
-  .header {
-    background: grey;
-    //height: 20vh;
-    position: fixed;
-    top: 2rem;
-    width: 100%;
-  }
-  #home-btns {
-    position: absolute;
-    top: 0;
-    right: 0;
-    padding: 10px;
-    display: flex;
-    justify-content: space-evenly;
-  }
+  height: 100%;
+ width:100%;
+ 
   #home-navbar {
-    position: absolute;
+    position: fixed;
     top: 0;
+    
+    
+    //padding-left:20vw; 
     width: 100%;
+    background-image: linear-gradient(to right, #c1dfc4 0%, #deecdd 100%);
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: black;
-    #searchbar {
-      width: 40%;
-      height: 1.5rem;
-      margin: 10px;
-      padding: 0.2em;
-      line-height: 1.5rem;
-      border-radius: 5px;
-    }
-    #recipe-settings {
-      display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center; 
+    #home-nav-btns{
+      //padding-left:20vw; 
+      width: 80%;
+      padding:0.5rem;  
+      display:flex;
+      justify-content: flex-end; 
+    }  
+    #recipes-toolbar{
+      margin-bottom:0.5rem;   
+      background:whitesmoke;
+      width:100%;
+      display:flex;
       justify-content: space-evenly;
-      margin: 10px;
+      #searchbar {
+        width: 50%;
+        height: 1.5rem;
+        margin: 10px;
+        padding: 0.1em;
+        line-height: 1.5rem;
+        border-radius: 5px;
+      }
     }
   }
+
   #display-recipes {
-    background: green;
-    // grid-area: main;
-    //margin: 1em 0;
+   
+    
     width: 100%;
-    margin-top: 10vh;
+    margin-top: 7rem;
+    
+   
     display: flex;
+    flex-direction: column;
     justify-content: center;
 
+    
     #recipe-list {
       padding-bottom: 1em;
       width: 95%;
+      height:70%;
+      overflow: auto;
       list-style: none;
       display: flex;
       justify-content: space-evenly;

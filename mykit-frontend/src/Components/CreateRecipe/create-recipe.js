@@ -1,4 +1,5 @@
 import React from "react";
+import axios from 'axios';
 import "./create_recipe.css";
 export default class CreateRecipe extends React.Component {
   constructor(props) {
@@ -23,7 +24,17 @@ export default class CreateRecipe extends React.Component {
   }
   onSubmit(e) {
     e.preventDefault();
-    console.log(this.state);
+    console.log('form submitted');
+    const newRecipe={
+      recipe_name:this.state.name,
+      recipe_desc:this.state.desc,
+      recipe_ingr:this.state.ingr,
+      recipe_method:this.state.method,
+      recipe_difficulty:this.state.difficulty,
+      recipe_servings:this.state.servings,
+      recipe_time:this.state.time
+    };
+    axios.post('http://localhost:4000/recipes/create',newRecipe).then(res=>console.log(res.data));
     this.setState({
       name: "",
       desc: "",
@@ -146,7 +157,7 @@ export default class CreateRecipe extends React.Component {
                   name="diffLevel"
                   id="interLevel"
                   value="moderate"
-                  checked={this.state.difficulty === "intermediate"}
+                  checked={this.state.difficulty === "moderate"}
                   onChange={this.onChangeDifficulty}
                 />
                 <label>Moderate</label>

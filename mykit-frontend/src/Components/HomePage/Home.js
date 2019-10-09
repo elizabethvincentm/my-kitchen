@@ -1,40 +1,54 @@
 import React from "react";
+import Recipe from "../RecipePage/Recipe";
 import "./home.css";
-import "../../index.css";
+//import "../../index.css";
 import { Link } from "react-router-dom";
 
 class Home extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      recipes: []
+    };
+  }
+
+  componentDidMount() {
+    this.props.fetchData();
+  }
+
   render() {
+    console.log(this.props);
     return (
       <div id="homepage">
-        <header className="header">
-          <div id="home-navbar">
-            <textarea id="searchbar" placeholder="search recipes" />
-            <button className="buttons">View Pantry/ShoppingList</button>
-            <div id="recipe-settings">
-              <button className="buttons">
-                <Link className="links" to="/home/create_recipe">
-                  Create New Recipe
-                </Link>
-              </button>
-              {/*<button className="buttons">Edit</button>
-              <button className="buttons">Delete</button>*/}
-            </div>
+        <nav id="home-navbar">
+          <div id="home-nav-btns">
+            <button className="buttons">
+              <Link className="links" to="/home/create_recipe">
+                New Recipe
+              </Link>
+            </button>
+            <button className="buttons">Visit Pantry</button>
           </div>
-        </header>
+
+          <div id="recipes-toolbar">
+            <textarea id="searchbar" placeholder="search recipes" />
+            <button className="buttons">Search</button>
+          </div>
+        </nav>
+
         <main id="display-recipes">
-          <ol id="recipe-list">
-            <li>
-              <Link className="links recipe-link" to="/home/recipe">
-                recipe1
-              </Link>
-            </li>
-            <li>
-              <Link className="links recipe-link" to="/home/recipe">
-                recipe2
-              </Link>
-            </li>
-          </ol>
+          <div id="recipe-list">
+            {this.props.recipes.map((x, i) => (
+              <li key={i}>
+                <Link
+                  className="links recipe-link"
+                  to={"/home/recipe/" + x._id}
+                >
+                  {x.recipe_name}
+                </Link>
+              </li>
+            ))}
+          </div>
         </main>
       </div>
     );
