@@ -3,20 +3,18 @@ import "./login.css";
 import "../../index.css";
 import { Link } from "react-router-dom";
 
-const setActiveStyle=(form)=>{
- // console.log(form);
-  let curLink=document.querySelector('.active-link');  
-  let nxtLink=document.getElementById(form+'-nav-link');
+const setActiveForm = form => {
+  // console.log(form);
+  let curLink = document.querySelector(".active-link");
+  let nxtLink = document.getElementById(form + "-nav-link");
   console.log(nxtLink);
- 
-  if(nxtLink!==curLink){
-    curLink.classList.remove('active-link');
-    
-    nxtLink.classList.add('active-link');
-    
+
+  if (nxtLink !== curLink) {
+    curLink.classList.remove("active-link");
+
+    nxtLink.classList.add("active-link");
   }
-  
-}
+};
 
 class Login extends React.Component {
   constructor(props) {
@@ -62,8 +60,7 @@ class Login extends React.Component {
     alert("My Kitchen created successfully!");
   }
   changeForm(formType) {
-   
-    setActiveStyle(formType);
+    setActiveForm(formType);
     this.setState({
       formType: formType
     });
@@ -130,7 +127,7 @@ class Login extends React.Component {
             onChange={this.onChangeRePassword}
           />
           <button className="buttons" type="submit">
-            Create
+            SignUp
           </button>
         </form>
       );
@@ -140,29 +137,28 @@ class Login extends React.Component {
     return (
       <div id="login-page">
         <div className="form-block">
-        <nav className="navbar">
-          <div
-            className="nav-link active-link"
-            id="login-nav-link"
-            onClick={() => {
-              this.changeForm("login");
-            }}
-          >
-            Login to<span className="app-logo">MyKitchen</span>
-          </div>
-          <div
-            className="nav-link"
-            id="signup-nav-link"
-            onClick={() => {
-              this.changeForm("signup");
-            }}
-          >
-            Create<span className="app-logo">MyKitchen</span>
-          </div>
-        </nav>
-        {this.displayForm()}
+          <nav className="login-navbar togglebar">
+            <div
+              className="nav-link active-link"
+              id="login-nav-link"
+              onClick={() => {
+                this.changeForm("login");
+              }}
+            >
+              Login
+            </div>
+            <div
+              className="nav-link"
+              id="signup-nav-link"
+              onClick={() => {
+                this.changeForm("signup");
+              }}
+            >
+              SignUp
+            </div>
+          </nav>
+          {this.displayForm()}
         </div>
-        
       </div>
     );
   }

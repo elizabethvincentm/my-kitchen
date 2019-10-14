@@ -1,54 +1,59 @@
 import React from "react";
-import Recipe from "../RecipePage/Recipe";
 import "./home.css";
-//import "../../index.css";
+import "../../index.css";
 import { Link } from "react-router-dom";
 
 class Home extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      recipes: []
-    };
-  }
-
   componentDidMount() {
     this.props.fetchData();
   }
 
   render() {
-    console.log(this.props);
+    //console.log(this.props);
     return (
       <div id="homepage">
-        <nav id="home-navbar">
-          <div id="home-nav-btns">
-            <button className="buttons">
-              <Link className="links" to="/home/create_recipe">
-                New Recipe
-              </Link>
-            </button>
-            <button className="buttons">Visit Pantry</button>
-          </div>
+        <header className="header">
+          <h1>My Recipes</h1>
+          <div className="actionbar">
+            <div className="toolbar">
+              <div className="searchbar">
+                <input
+                  type="text"
+                  className="search-input"
+                  placeholder="search recipes"
+                />
+                <button className="buttons">Search</button>
+              </div>
 
-          <div id="recipes-toolbar">
-            <textarea id="searchbar" placeholder="search recipes" />
-            <button className="buttons">Search</button>
-          </div>
-        </nav>
-
-        <main id="display-recipes">
-          <div id="recipe-list">
-            {this.props.recipes.map((x, i) => (
-              <li key={i}>
-                <Link
-                  className="links recipe-link"
-                  to={"/home/recipe/" + x._id}
-                >
-                  {x.recipe_name}
+              <button className="buttons round-btns">
+                <Link className="links" to="/home/recipe/create">
+                  +
                 </Link>
-              </li>
-            ))}
+              </button>
+            </div>
+            <div id="home-nav-btns" className="navbar">
+              <button className="buttons">Visit Pantry</button>
+            </div>
           </div>
+        </header>
+
+        <main id="recipe-list">
+          {this.props.recipes.map((x, i) => (
+            <Link
+              className="links recipe-link"
+              to={"/home/recipe/view/" + x._id}
+              onClick={() => {
+                this.props.setCurrentRecipe(x._id);
+              }}
+            >
+              <h3>{x.recipe_name}</h3>
+              <img
+                src={
+                  "https://cdn-image.myrecipes.com/sites/default/files/styles/4_3_horizontal_-_1200x900/public/mrtrending0475.jpg?itok=ULkGk3Pn"
+                }
+              />
+            </Link>
+          ))}
         </main>
       </div>
     );

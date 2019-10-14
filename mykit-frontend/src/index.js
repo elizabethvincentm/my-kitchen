@@ -6,13 +6,14 @@ import axios from "axios";
 import Login from "./Components/LoginPage/Login";
 import Home from "./Components/HomePage/Home";
 import Recipe from "./Components/RecipePage/Recipe";
-import CreateRecipe from "./Components/CreateRecipe/create-recipe";
+import RecipeForm from "./Components/RecipeForm/recipe-form";
 
 import * as serviceWorker from "./serviceWorker";
 
 class RecipeApp extends React.Component {
   state = {
-    recipes: []
+    recipes: [],
+    currentRecipe: {}
   };
 
   fetchData(user) {
@@ -26,12 +27,36 @@ class RecipeApp extends React.Component {
         console.log(err);
       });
   }
-
+  setCurrentRecipe(id) {
+    this.setState({
+      currentRecipe: this.state.recipes.find(x => x._id === id)
+    });
+    console.log(this.state.currentRecipe);
+  }
+  addRecipe(recipe_data) {
+    axios
+      .post("http://localhost:4000/recipes/create", recipe_data)
+      .then(res => console.log(res.data));
+    console.log("recipe added");
+  }
+  editRecipe(recipe_data, recipe_id) {
+    axios
+      .post(`http://localhost:4000/recipes/update/${recipe_id}`, recipe_data)
+      .then(res => console.log(res.data));
+    console.log("recipe updated");
+  }
+  deleteRecipe() {
+    axios
+      .delete(
+        `http://localhost:4000/recipes/delete/${this.state.currentRecipe._id}`
+      )
+      .then(res => console.log(res.data));
+  }
   render() {
     return (
       <Router>
         <div id="app">
-          <header id="header">
+          <header id="app-header">
             <Link className="links" to="/">
               <div className="app-logo">MyKitchen</div>
             </Link>
@@ -45,15 +70,40 @@ class RecipeApp extends React.Component {
               <Home
                 {...props}
                 fetchData={this.fetchData.bind(this)}
+                setCurrentRecipe={this.setCurrentRecipe.bind(this)}
                 recipes={this.state.recipes}
               />
             )}
           />
           <Route
-            path="/home/recipe/:id"
-            render={props => <Recipe {...props} data={this.state.recipes} />}
+            path="/home/recipe/view/:id"
+            render={props => (
+              <Recipe
+                {...props}
+                data={this.state.currentRecipe}
+                deleteRecipe={this.deleteRecipe.bind(this)}
+              />
+            )}
           />
-          <Route path="/home/create_recipe" component={CreateRecipe} />
+          {/*<Route path="/home/create_recipe" component={CreateRecipe} />*/}
+          <Route
+            path="/home/recipe/create"
+            render={props => (
+              <RecipeForm {...props} data={null} action={this.addRecipe} />
+            )}
+          />
+          <Route
+            path="/home/recipe/edit/:id"
+            render={props => (
+              <RecipeForm
+                {...props}
+                data={this.state.recipes.find(
+                  x => x._id === props.match.params.id
+                )}
+                action={this.editRecipe}
+              />
+            )}
+          />
           <footer className="footer">&copy; elizabethvincentm</footer>
         </div>
       </Router>
