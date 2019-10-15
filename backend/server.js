@@ -53,34 +53,46 @@ recipeRoutes.route("/:id").get(function(req, res) {
   });
 });
 
-recipeRoutes.route("/update/:id").post(function(req, res) {
-  Recipe.findById(req.params.id, function(err, data) {
-    if (!data) res.status(404).send("data not found");
-    else {
-      data.recipe_name = req.body.recipe_name;
-      data.recipe_desc = req.body.recipe_desc;
-      data.recipe_ingr = req.body.recipe_ingr;
-      data.recipe_method = req.body.recipe_method;
-      data.recipe_difficulty = req.body.recipe_difficulty;
-      data.recipe_servings = req.body.recipe_servings;
-      data.recipe_time = req.body.recipe_time;
-      data.recipe_image = req.body.recipe_image;
-      data
-        .save()
-        .then(data => res.json("Recipe Updated!"))
-        .catch(err => res.status(404).send("Update not possible!"));
-    }
+recipeRoutes
+  .route("/update/:id")
+  .post(parser.single("recipe_imageFile"), function(req, res) {
+    Recipe.findById(req.params.id, function(err, data) {
+      if (!data) res.status(404).send("data not found");
+      else {
+        if (req.file) {
+          const image = {};
+          image.public_id = req.file.public_id;
+          image.url = req.file.url;
+          data.recipe_image = image;
+        }
+
+        data.recipe_name = req.body.recipe_name;
+        data.recipe_desc = req.body.recipe_desc;
+        data.recipe_ingr = req.body.recipe_ingr;
+        data.recipe_method = req.body.recipe_method;
+        data.recipe_difficulty = req.body.recipe_difficulty;
+        data.recipe_servings = req.body.recipe_servings;
+        data.recipe_time = req.body.recipe_time;
+
+        data
+          .save()
+          .then(data => res.json("Recipe Updated!"))
+          .catch(err => res.status(404).send("Update not possible!"));
+      }
+    });
   });
-});
 
 recipeRoutes
   .route("/create")
   .post(parser.single("recipe_imageFile"), function(req, res) {
-    console.log(req.file);
-    const image = {};
-    image.public_id = req.file.public_id;
-    image.url = req.file.url;
     let data = new Recipe();
+    if (req.file) {
+      const image = {};
+      image.public_id = req.file.public_id;
+      image.url = req.file.url;
+      data.recipe_image = image;
+    }
+
     data.recipe_name = req.body.recipe_name;
     data.recipe_desc = req.body.recipe_desc;
     data.recipe_ingr = req.body.recipe_ingr;
@@ -88,7 +100,7 @@ recipeRoutes
     data.recipe_difficulty = req.body.recipe_difficulty;
     data.recipe_servings = req.body.recipe_servings;
     data.recipe_time = req.body.recipe_time;
-    data.recipe_image = image;
+
     //let data = new Recipe(req.body);
     data
       .save()
@@ -98,9 +110,17 @@ recipeRoutes
       .catch(err => res.status(400).send("recipe creation failed"));
   });
 recipeRoutes.route("/delete/:id").delete(function(req, res) {
+  //cloudinary.uploader.destroy(req.body.recipe_image.public_id);
+
+  Recipe.findById(req.params.id, function(err, recipe_data) {
+    cloudinary.uploader.destroy(recipe_data.recipe_image.public_id);
+  });
+
   Recipe.deleteOne({ _id: req.params.id }, function(err) {
     if (err) res.send(err);
-    else res.send("recipe deleted successfully");
+    else {
+      res.send("recipe deleted successfully");
+    }
   });
 });
 

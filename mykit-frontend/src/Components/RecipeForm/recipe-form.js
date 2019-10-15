@@ -96,15 +96,10 @@ export default class RecipeForm extends React.Component {
     formdata.append("recipe_time", this.state.time);
     formdata.append("recipe_imageFile", this.state.imageFile);
 
-    /* recipe_desc: this.state.desc,
-      recipe_ingr: this.state.ingr,
-      recipe_method: this.state.method,
-      recipe_difficulty: this.state.difficulty,
-      recipe_servings: this.state.servings,
-      recipe_time: this.state.time,
-      recipe_imageFile: "image" + this.state.imageFile*/
+    if (this.props.action(formdata, this.props.match.params.id)) {
+      this.props.history.push("/home");
+    }
 
-    this.props.action(formdata, this.props.match.params.id);
     this.setState({
       name: "",
       desc: "",
