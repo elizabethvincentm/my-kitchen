@@ -13,24 +13,24 @@
 }
 #recipe-page .recipe-details #photos {
   grid-area: photos;
+  padding: 0.25rem 0.5rem;
 }
 #recipe-page .recipe-details #photos img {
-  padding: 0.5rem;
   width: auto;
   height: 50vh;
 }
 #recipe-page .recipe-details #desc {
   grid-area: desc;
-  padding: 0.5rem;
+  padding: 0.25rem 0.5rem;
 }
 #recipe-page .recipe-details .recipe-navbar {
   grid-area: navbar;
+  padding: 0.25rem 0.5rem;
 }
 #recipe-page .recipe-details .recipe-content {
   grid-area: recipe-content;
-  height: 100%;
-  padding: 0.5em;
-  text-align: center;
+  padding: 0.25rem 0.5rem;
+  text-align: justify;
   margin: 0 1.5em 1em 1.5em;
 }
 

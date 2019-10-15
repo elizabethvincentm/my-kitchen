@@ -14,27 +14,26 @@
     grid-template-columns: 1fr 3fr;
     #photos {
       grid-area: photos;
+      padding: 0.25rem 0.5rem;
 
       img {
-        padding: 0.5rem;
         width: auto;
         height: 50vh;
       }
     }
     #desc {
       grid-area: desc;
-      padding: 0.5rem;
+      padding: 0.25rem 0.5rem;
     }
     .recipe-navbar {
       grid-area: navbar;
+      padding: 0.25rem 0.5rem;
     }
     .recipe-content {
       grid-area: recipe-content;
-      height: 100%;
-      padding: 0.5em;
-      text-align: center;
+      padding: 0.25rem 0.5rem;
+      text-align: justify;
       margin: 0 1.5em 1em 1.5em;
-      //background: #c1dfc4;
     }
   }
 }

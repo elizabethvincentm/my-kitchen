@@ -1,6 +1,11 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Link,
+  Redirect
+} from "react-router-dom";
 //import "./index.css";
 import axios from "axios";
 import Login from "./Components/LoginPage/Login";
@@ -27,6 +32,7 @@ class RecipeApp extends React.Component {
         console.log(err);
       });
   }
+  imageHandler(imgFile) {}
   setCurrentRecipe(id) {
     this.setState({
       currentRecipe: this.state.recipes.find(x => x._id === id)
@@ -48,9 +54,12 @@ class RecipeApp extends React.Component {
   deleteRecipe() {
     axios
       .delete(
-        `http://localhost:4000/recipes/delete/${this.state.currentRecipe._id}`
+        `http://localhost:4000/recipes/delete/${this.state.currentRecipe._id}`,
+        console.log("being deleted")
       )
-      .then(res => console.log(res.data));
+      .then(res => {
+        console.log(res.data);
+      });
   }
   render() {
     return (
@@ -89,7 +98,12 @@ class RecipeApp extends React.Component {
           <Route
             path="/home/recipe/create"
             render={props => (
-              <RecipeForm {...props} data={null} action={this.addRecipe} />
+              <RecipeForm
+                {...props}
+                data={null}
+                action={this.addRecipe}
+                imageHandler={this.imageHandler}
+              />
             )}
           />
           <Route
@@ -101,6 +115,7 @@ class RecipeApp extends React.Component {
                   x => x._id === props.match.params.id
                 )}
                 action={this.editRecipe}
+                imageHandler={this.imageHandler}
               />
             )}
           />

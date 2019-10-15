@@ -76,6 +76,8 @@ body {
 
   h1 {
     text-align: center;
+    padding: 0.1rem;
+    margin: 0;
   }
   .actionbar {
     //background: #bafabe;
@@ -126,7 +128,7 @@ input {
 
   //font-size: 1.2rem;
   .nav-link {
-    border-bottom: 4px solid rgb(172, 167, 167);
+    border-bottom: 4px solid rgb(196, 188, 188);
     font-size: 1.5rem;
     height: 2rem;
     width: 50%;
@@ -149,6 +151,6 @@ input {
   color: black;
   font-weight: 600;
   padding: 0.5rem;
-  background: #5a9660;
+  background: #89c78e;
   //background: #457202;
 }

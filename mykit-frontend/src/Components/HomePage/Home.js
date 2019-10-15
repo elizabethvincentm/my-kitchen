@@ -9,7 +9,6 @@ class Home extends React.Component {
   }
 
   render() {
-    //console.log(this.props);
     return (
       <div id="homepage">
         <header className="header">
@@ -25,9 +24,9 @@ class Home extends React.Component {
                 <button className="buttons">Search</button>
               </div>
 
-              <button className="buttons round-btns">
+              <button className="buttons">
                 <Link className="links" to="/home/recipe/create">
-                  +
+                  New Recipe
                 </Link>
               </button>
             </div>
@@ -40,6 +39,7 @@ class Home extends React.Component {
         <main id="recipe-list">
           {this.props.recipes.map((x, i) => (
             <Link
+              key={x._id}
               className="links recipe-link"
               to={"/home/recipe/view/" + x._id}
               onClick={() => {
@@ -51,6 +51,7 @@ class Home extends React.Component {
                 src={
                   "https://cdn-image.myrecipes.com/sites/default/files/styles/4_3_horizontal_-_1200x900/public/mrtrending0475.jpg?itok=ULkGk3Pn"
                 }
+                alt={"image-" + x.recipe_name}
               />
             </Link>
           ))}

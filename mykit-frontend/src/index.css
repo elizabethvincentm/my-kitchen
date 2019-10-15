@@ -74,6 +74,8 @@ body {
 }
 .header h1 {
   text-align: center;
+  padding: 0.1rem;
+  margin: 0;
 }
 .header .actionbar {
   display: flex;
@@ -122,7 +124,7 @@ input {
   margin: 1em 1em 0 1em;
 }
 .togglebar .nav-link {
-  border-bottom: 4px solid #aca7a7;
+  border-bottom: 4px solid #c4bcbc;
   font-size: 1.5rem;
   height: 2rem;
   width: 50%;
@@ -144,7 +146,7 @@ input {
   color: black;
   font-weight: 600;
   padding: 0.5rem;
-  background: #5a9660;
+  background: #89c78e;
 }
 
 /*# sourceMappingURL=index.css.map */

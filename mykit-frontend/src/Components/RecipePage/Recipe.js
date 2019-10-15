@@ -80,7 +80,9 @@ class Recipe extends React.Component {
           <div id="photos">
             <img
               src={
-                "https://cdn-image.myrecipes.com/sites/default/files/styles/4_3_horizontal_-_1200x900/public/mrtrending0475.jpg?itok=ULkGk3Pn"
+                this.props.data.recipe_image !== undefined
+                  ? this.props.data.recipe_image.url
+                  : ""
               }
             />
           </div>

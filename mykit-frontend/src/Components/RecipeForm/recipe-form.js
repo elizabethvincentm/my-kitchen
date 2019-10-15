@@ -12,6 +12,7 @@ export default class RecipeForm extends React.Component {
         difficulty: this.props.data.recipe_difficulty,
         servings: this.props.data.recipe_servings,
         time: this.props.data.recipe_time,
+        imageFile: this.props.data.recipe_imageFile,
         actionName: "Update Recipe"
       };
     } else
@@ -23,6 +24,7 @@ export default class RecipeForm extends React.Component {
         difficulty: "",
         servings: "",
         time: "",
+        imageFile: null,
         actionName: "Add Recipe"
       };
     this.onSubmit = this.onSubmit.bind(this);
@@ -33,6 +35,13 @@ export default class RecipeForm extends React.Component {
     this.onChangeRecipeName = this.onChangeRecipeName.bind(this);
     this.onChangeServings = this.onChangeServings.bind(this);
     this.onChangeTime = this.onChangeTime.bind(this);
+    this.onImageUpload = this.onImageUpload.bind(this);
+  }
+  onImageUpload(e) {
+    console.log(e.target.value);
+    this.setState({
+      imageFile: e.target.files[0]
+    });
   }
   onChangeRecipeName(e) {
     this.setState({
@@ -76,16 +85,26 @@ export default class RecipeForm extends React.Component {
   onSubmit(e) {
     e.preventDefault();
     console.log("form submitted");
-    const recipe = {
-      recipe_name: this.state.name,
-      recipe_desc: this.state.desc,
+    let formdata = new FormData();
+
+    formdata.append("recipe_name", this.state.name);
+    formdata.append("recipe_desc", this.state.desc);
+    formdata.append("recipe_ingr", this.state.ingr);
+    formdata.append("recipe_method", this.state.method);
+    formdata.append("recipe_difficulty", this.state.difficulty);
+    formdata.append("recipe_servings", this.state.servings);
+    formdata.append("recipe_time", this.state.time);
+    formdata.append("recipe_imageFile", this.state.imageFile);
+
+    /* recipe_desc: this.state.desc,
       recipe_ingr: this.state.ingr,
       recipe_method: this.state.method,
       recipe_difficulty: this.state.difficulty,
       recipe_servings: this.state.servings,
-      recipe_time: this.state.time
-    };
-    this.props.action(recipe, this.props.match.params.id);
+      recipe_time: this.state.time,
+      recipe_imageFile: "image" + this.state.imageFile*/
+
+    this.props.action(formdata, this.props.match.params.id);
     this.setState({
       name: "",
       desc: "",
@@ -94,12 +113,17 @@ export default class RecipeForm extends React.Component {
       difficulty: "",
       servings: "",
       time: "",
+      imageFile: null,
       actionName: "Add Recipe"
     });
   }
   render() {
     return (
-      <form id={this.props.formType} onSubmit={this.onSubmit}>
+      <form
+        id={this.props.formType}
+        onSubmit={this.onSubmit}
+        encType="multipart/form-data"
+      >
         <div className="form-item">
           <div className="labels">
             <label>*Recipe Name:</label>
@@ -219,9 +243,19 @@ export default class RecipeForm extends React.Component {
           </div>
         </div>
         <div className="form-item">
-          <button className="buttons" type="submit">
-            {this.state.actionName}
-          </button>
+          <div className="labels">
+            <label>Upload image:</label>
+          </div>
+          <div className="inputs">
+            <input
+              type="file"
+              files={this.state.imageFile}
+              onChange={this.onImageUpload}
+            />
+          </div>
+        </div>
+        <div className="form-item">
+          <button className="buttons">{this.state.actionName}</button>
         </div>
       </form>
     );
