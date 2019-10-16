@@ -14,19 +14,20 @@ body {
 }
 
 #app-header {
-  background: #5a9660;
+  background: #a15000;
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  font-size: 1.5rem;
+  font-size: 1.1rem;
+  z-index: 2;
 }
 #app-header .links {
   color: black;
 }
 
 .app-logo {
-  padding: 0.5rem;
+  padding: 0.2rem;
   font-family: "Oregano", cursive;
   font-weight: 600;
 }
@@ -37,9 +38,9 @@ body {
 }
 
 .buttons {
-  background: #dea6ba;
-  color: #000;
-  box-shadow: 0 2px 3px #535050;
+  background: #323e40;
+  color: whitesmoke;
+  box-shadow: 1px 2px 3px #535050;
   border: none;
   border-radius: 5px;
   text-align: center;
@@ -49,7 +50,7 @@ body {
   cursor: pointer;
 }
 .buttons .links {
-  color: black;
+  color: whitesmoke;
 }
 
 .round-btns {
@@ -60,52 +61,64 @@ body {
 }
 
 .buttons:hover {
-  background: #ac778a;
+  background: #5c696b;
 }
 
 .header {
   position: sticky;
-  top: 2.5rem;
-  background: #89c78e;
+  top: 1.5rem;
+  background: #d97d0d;
   width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
+  z-index: 2;
 }
 .header h1 {
   text-align: center;
-  padding: 0.1rem;
-  margin: 0;
+  text-transform: uppercase;
+  font-family: "Oregano", cursive;
+  padding: 0.2rem;
+  margin: 0.3rem;
 }
 .header .actionbar {
+  background: #ffad46;
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
+  margin: 0;
 }
 .header .actionbar .navbar {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  padding: 0.2rem;
+  padding: 0.1rem;
 }
 .header .actionbar .toolbar {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  padding: 0.2rem;
+  padding: 0.1rem;
 }
 .header .actionbar .toolbar .searchbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 10px;
 }
-.header .infobar {
-  background: #bafabe;
+.header .actionbar .infobar {
   display: flex;
   justify-content: space-evenly;
-  padding: 0.2rem;
+  padding: 0.1rem;
+}
+.header .actionbar .infobar .info-item {
+  background: #323e40;
+  color: #ffad46;
+  font-size: 1.2rem;
+  padding: 0.3rem;
+  margin: 0 0.3rem;
+  font-weight: 600;
+  border-radius: 10px;
 }
 
 input {
@@ -124,7 +137,7 @@ input {
   margin: 1em 1em 0 1em;
 }
 .togglebar .nav-link {
-  border-bottom: 4px solid #c4bcbc;
+  border-bottom: 4px solid #a6bdc0;
   font-size: 1.5rem;
   height: 2rem;
   width: 50%;
@@ -135,7 +148,7 @@ input {
 .togglebar .nav-link:hover,
 .togglebar .active-link,
 .togglebar .active-display {
-  border-bottom: 4px solid #ac778a;
+  border-bottom: 4px solid #323e40;
 }
 
 .footer {
@@ -146,7 +159,7 @@ input {
   color: black;
   font-weight: 600;
   padding: 0.5rem;
-  background: #89c78e;
+  background: #ffad46;
 }
 
 /*# sourceMappingURL=index.css.map */

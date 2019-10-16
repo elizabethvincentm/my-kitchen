@@ -1,7 +1,10 @@
 #login-page {
-  margin: 10vh 5vw;
-  width: 90vw;
-  height: 80vh;
+  background: url("../../bg.jpg");
+  background-position: center;
+  background-size: cover;
+  margin: 0;
+  width: 100%;
+  height: 100vh;
   padding: 0;
   display: flex;
   flex-direction: column;
@@ -10,7 +13,7 @@
   border-radius: 10px;
 }
 #login-page .form-block {
-  background: #89c78e;
+  background: rgba(245, 245, 245, 0.5);
   width: 70%;
   display: flex;
   flex-direction: column;

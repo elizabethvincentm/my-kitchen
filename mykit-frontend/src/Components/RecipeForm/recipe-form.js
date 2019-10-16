@@ -1,4 +1,5 @@
 import React from "react";
+import axios from "axios";
 import "./recipeform.css";
 
 export default class RecipeForm extends React.Component {
@@ -37,6 +38,35 @@ export default class RecipeForm extends React.Component {
     this.onChangeServings = this.onChangeServings.bind(this);
     this.onChangeTime = this.onChangeTime.bind(this);
     this.onImageUpload = this.onImageUpload.bind(this);
+  }
+  addRecipe(recipe_data) {
+    axios
+      .post("http://localhost:4000/recipes/create", recipe_data)
+      .then(res => {
+        console.log(res.data);
+        if (res.status === 200) {
+          alert("recipe created");
+          this.props.history.push("/home");
+        } else {
+          alert("failed to add recipe!", res.statusText);
+        }
+      });
+  }
+  editRecipe(recipe_data) {
+    axios
+      .post(
+        `http://localhost:4000/recipes/update/${this.props.match.params.id}`,
+        recipe_data
+      )
+      .then(res => {
+        console.log(res.data);
+        if (res.status === 200) {
+          alert("recipe updated");
+          this.props.history.push("/home");
+        } else {
+          alert("failed to update recipe!", res.statusText);
+        }
+      });
   }
   onImageUpload(e) {
     console.log(e.target.value);
@@ -97,9 +127,15 @@ export default class RecipeForm extends React.Component {
     formdata.append("recipe_time", this.state.time);
     formdata.append("recipe_imageFile", this.state.imageFile);
 
-    if (this.props.action(formdata, this.props.match.params.id)) {
-      this.props.history.push("/home");
+    if (this.state.actionName === "Update Recipe") {
+      this.editRecipe(formdata);
+    } else {
+      this.addRecipe(formdata);
     }
+
+    /* if (this.props.action(formdata, this.props.match.params.id)) {
+      this.props.history.push("/home");
+    }*/
 
     this.setState({
       name: "",

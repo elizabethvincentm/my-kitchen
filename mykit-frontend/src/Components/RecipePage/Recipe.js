@@ -1,4 +1,5 @@
 import React from "react";
+import axios from "axios";
 import { Link } from "react-router-dom";
 import "./recipe.css";
 import "../../index.css";
@@ -14,12 +15,15 @@ const setRecipeDisplay = str => {
 class Recipe extends React.Component {
   constructor(props) {
     super(props);
+    console.log(props);
     this.state = {
       display: "ingr"
     };
     this.toggleRecipeDisplay = this.toggleRecipeDisplay.bind(this);
     this.recipeDisplay = this.recipeDisplay.bind(this);
+    this.deleteRecipe = this.deleteRecipe.bind(this);
   }
+
   toggleRecipeDisplay() {
     if (this.state.display === "ingr") this.setState({ display: "method" });
     else {
@@ -35,6 +39,16 @@ class Recipe extends React.Component {
       return <div id="method">{this.props.data.recipe_method}</div>;
     }
   }
+  deleteRecipe() {
+    axios
+      .delete(
+        `http://localhost:4000/recipes/delete/${this.props.match.params.id}`
+      )
+      .then(res => {
+        console.log(res.data);
+        this.props.history.push("/home");
+      });
+  }
   render() {
     let id = this.props.match.params.id;
     return (
@@ -44,35 +58,33 @@ class Recipe extends React.Component {
           <div className="actionbar">
             <div className="navbar">
               <button className="buttons">
-                <Link className="links recipe-link" to="/home">
-                  home
+                <Link className="links recipe-link" to="/home/recipes">
+                  <i className="fas fa-home"></i>
                 </Link>
               </button>
+              <div className="toolbar">
+                <button className="buttons">
+                  <Link className="links recipe-link" to={`/recipe/edit/${id}`}>
+                    <i className="fas fa-edit"></i>
+                  </Link>
+                </button>
+                <button className="buttons" onClick={this.deleteRecipe}>
+                  <i className="fas fa-trash-alt"></i>
+                </button>
+              </div>
             </div>
-            <div className="toolbar">
-              <button className="buttons">
-                <Link
-                  className="links recipe-link"
-                  to={`/home/recipe/edit/${id}`}
-                >
-                  edit
-                </Link>
-              </button>
-              <button className="buttons" onClick={this.props.deleteRecipe}>
-                delete
-              </button>
-            </div>
-          </div>
 
-          <div className="infobar">
-            <div className="info-item">
-              DifficultyLevel:{this.props.data.recipe_difficulty}
-            </div>
-            <div className="info-item">
-              Total Cooking Time:{this.props.data.recipe_time}
-            </div>
-            <div className="info-item">
-              Servings:{this.props.data.recipe_servings}
+            <div className="infobar">
+              <div className="info-item">
+                {this.props.data.recipe_difficulty}
+              </div>
+              <div className="info-item">
+                <i className="fas fa-clock"></i> {this.props.data.recipe_time}
+              </div>
+              <div className="info-item">
+                <i className="fas fa-chart-pie"></i>{" "}
+                {this.props.data.recipe_servings}
+              </div>
             </div>
           </div>
         </header>
@@ -84,6 +96,7 @@ class Recipe extends React.Component {
                   ? this.props.data.recipe_image.url
                   : ""
               }
+              alt={`${this.props.data.recipe_name}`}
             />
           </div>
           <div id="desc">{this.props.data.recipe_desc}</div>
