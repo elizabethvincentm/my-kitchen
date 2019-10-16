@@ -7,7 +7,12 @@ class Home extends React.Component {
   componentDidMount() {
     this.props.fetchData();
   }
-
+  componentWillUnmount() {
+    console.log("componentWillUnmount");
+  }
+  componentDidUpdate() {
+    console.log("componentDidUpdate");
+  }
   render() {
     return (
       <div id="homepage">

@@ -1,4 +1,5 @@
 import React from "react";
+import "./recipeform.css";
 
 export default class RecipeForm extends React.Component {
   constructor(props) {
@@ -115,7 +116,7 @@ export default class RecipeForm extends React.Component {
   render() {
     return (
       <form
-        id={this.props.formType}
+        id="recipeformpage"
         onSubmit={this.onSubmit}
         encType="multipart/form-data"
       >
@@ -132,7 +133,7 @@ export default class RecipeForm extends React.Component {
             />
           </div>
         </div>
-        *
+
         <div className="form-item">
           <div className="labels">
             <label>Short Description:</label>

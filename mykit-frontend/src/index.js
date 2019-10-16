@@ -12,7 +12,7 @@ import Login from "./Components/LoginPage/Login";
 import Home from "./Components/HomePage/Home";
 import Recipe from "./Components/RecipePage/Recipe";
 import RecipeForm from "./Components/RecipeForm/recipe-form";
-
+import Footer from "./Components/Footer";
 import * as serviceWorker from "./serviceWorker";
 
 class RecipeApp extends React.Component {
@@ -20,8 +20,7 @@ class RecipeApp extends React.Component {
     super(props);
     this.state = {
       recipes: [],
-      currentRecipe: {},
-      updateRecipeList: false
+      currentRecipe: {}
     };
     this.fetchData = this.fetchData.bind(this);
   }
@@ -50,7 +49,6 @@ class RecipeApp extends React.Component {
         console.log(res.data);
         if (res.status === 200) {
           alert("recipe created");
-          this.setState({ updateRecipeList: true });
         } else {
           alert("failed to add recipe!", res.statusText);
           result = false;
@@ -103,7 +101,6 @@ class RecipeApp extends React.Component {
                 fetchData={this.fetchData.bind(this)}
                 setCurrentRecipe={this.setCurrentRecipe.bind(this)}
                 recipes={this.state.recipes}
-                updateRecipeList={this.state.updateRecipeList}
               />
             )}
           />
@@ -137,7 +134,7 @@ class RecipeApp extends React.Component {
               />
             )}
           />
-          <footer className="footer">&copy; elizabethvincentm</footer>
+          <Footer />
         </div>
       </Router>
     );
