@@ -2,6 +2,7 @@ import React from "react";
 import "./login.css";
 import "../../index.css";
 import { Link } from "react-router-dom";
+import AppHeader from "../AppHeader";
 
 const setActiveForm = form => {
   // console.log(form);
@@ -136,6 +137,7 @@ class Login extends React.Component {
   render() {
     return (
       <div id="login-page">
+        <AppHeader align="center" fontsize="4rem" logoColor="#d97d0d" />
         <div className="form-block">
           <nav className="login-navbar togglebar">
             <div

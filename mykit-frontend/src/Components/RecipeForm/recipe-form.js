@@ -133,10 +133,6 @@ export default class RecipeForm extends React.Component {
       this.addRecipe(formdata);
     }
 
-    /* if (this.props.action(formdata, this.props.match.params.id)) {
-      this.props.history.push("/home");
-    }*/
-
     this.setState({
       name: "",
       desc: "",

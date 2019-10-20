@@ -4,32 +4,8 @@
   height: 100%;
   width: 100%;
 }
-#homepage #recipe-list {
-  margin: 5rem 1rem;
+#homepage .home-header {
   display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-  flex-wrap: wrap;
-}
-#homepage #recipe-list .recipe-link {
-  text-align: center;
-  width: 300px;
-  min-height: 300px;
-  border-radius: 5px;
-  background: white;
-  margin: 0.5rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  box-shadow: 0 4px 8px #666666;
-}
-#homepage #recipe-list .recipe-link img {
-  width: 300px;
-  height: auto;
-}
-#homepage #recipe-list .recipe-link:hover,
-#homepage #recipe-list .recipe-link:active {
-  transform: rotateZ(-2deg);
 }
 
 /*# sourceMappingURL=home.css.map */

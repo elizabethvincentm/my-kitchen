@@ -11,22 +11,14 @@ body {
   width: 100%;
   height: 100%;
 }
-#app-header {
-  background: #a15000;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  font-size: 1.1rem;
-  z-index: 2;
+.app-header {
+  padding: 0.5rem 1rem;
+  //z-index: 2;
   .links {
     color: black;
   }
 }
 .app-logo {
-  padding: 0.2rem;
-  //z-index: 10;
-  //height: 1rem;
   font-family: "Oregano", cursive;
   font-weight: 600;
 }
@@ -42,87 +34,77 @@ body {
   border: none;
   border-radius: 5px;
   text-align: center;
-  font-size: 1.1rem;
+  font-size: 0.875rem;
   padding: 0.5rem;
-  margin: 0.3em;
-
+  margin: 0.25rem;
   cursor: pointer;
   .links {
     color: whitesmoke;
+    display: block;
   }
 }
-.round-btns {
-  border-radius: 50%;
-  width: 3rem;
-  height: 3rem;
-  font-size: 1.1rem;
-}
+
 .buttons:hover {
   background: #5c696b;
 }
 
 .header {
   position: sticky;
-  top: 1.5rem;
-  background: #d97d0d;
+  top: 0;
+
+  background: #a15000;
   width: 100%;
   display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
+  //flex-direction: column;
+  justify-content: space-between;
   z-index: 2;
-  h1 {
-    text-align: center;
-    text-transform: uppercase;
-    font-family: "Oregano", cursive;
-    padding: 0.2rem;
-    margin: 0.3rem;
+
+  .navbar {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    //padding: 0.1rem;
   }
-  .actionbar {
-    //background: #bafabe;
-    background: #ffad46;
+}
+.actionbar {
+  //background: #bafabe;
+  background: #ffad46;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: 0;
+  padding: 0 0.5rem;
+
+  .toolbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    flex-wrap: wrap;
-    margin: 0;
-    .navbar {
+    padding: 0.25rem;
+    .searchbar {
       display: flex;
-      justify-content: space-evenly;
+      justify-content: space-between;
       align-items: center;
-      padding: 0.1rem;
     }
-    .toolbar {
-      display: flex;
-      justify-content: space-evenly;
-      align-items: center;
-      padding: 0.1rem;
-      .searchbar {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        //margin: 10px;
-      }
-    }
-    .infobar {
-      display: flex;
-      justify-content: space-evenly;
-      padding: 0.1rem;
+  }
+  .infobar {
+    display: flex;
+    justify-content: space-evenly;
+    padding: 0.25rem;
 
-      .info-item {
-        background: #323e40;
-        color: #ffad46;
-        font-size: 1.2rem;
-        padding: 0.3rem;
-        margin: 0 0.3rem;
-        font-weight: 600;
-        border-radius: 10px;
-      }
+    .info-item {
+      color: #323e40;
+      font-size: 1.2rem;
+      padding: 0.5rem;
+      margin: 0.5rem;
+      font-weight: 600;
+      border-radius: 10px;
     }
   }
 }
 input {
-  font-size: 1.1rem;
-  margin: 0.3em;
+  font-size: 0.875rem;
+  margin: 0.25rem;
   border-radius: 5px;
   border: none;
   width: 300px;
@@ -135,7 +117,6 @@ input {
   padding: 0.5em 0.5em 0 0.5em;
   margin: 1em 1em 0 1em;
 
-  //font-size: 1.2rem;
   .nav-link {
     border-bottom: 4px solid #a6bdc0;
     font-size: 1.5rem;
@@ -155,11 +136,10 @@ input {
   position: fixed;
   bottom: 0;
   width: 100%;
-  //height: 1.5rem;
   text-align: center;
   color: black;
   font-weight: 600;
   padding: 0.5rem;
-  background: #ffad46;
-  //background: #457202;
+  background: white;
+  font-size: 0.875rem;
 }

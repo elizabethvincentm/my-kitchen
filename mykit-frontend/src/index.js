@@ -5,7 +5,8 @@ import "./index.css";
 import axios from "axios";
 import Login from "./Components/LoginPage/Login";
 import Home from "./Components/HomePage/Home";
-
+import DisplayRecipes from "./Components/DisplayRecipes/DisplayRecipes";
+import DisplayPantry from "./Components/DisplayPantry/DisplayPantry";
 import Footer from "./Components/Footer";
 import * as serviceWorker from "./serviceWorker";
 
@@ -14,12 +15,6 @@ class RecipeApp extends React.Component {
     return (
       <Router>
         <div id="app">
-          <header id="app-header">
-            <Link className="links" to="/">
-              <div className="app-logo">MyKitchen</div>
-            </Link>
-          </header>
-
           <Route path="/" exact component={Login} />
           <Route path="/home" exact render={props => <Home {...props} />} />
 
