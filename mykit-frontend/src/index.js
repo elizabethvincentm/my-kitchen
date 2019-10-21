@@ -1,26 +1,24 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 import "./index.css";
 import axios from "axios";
 import Login from "./Components/LoginPage/Login";
 import Home from "./Components/HomePage/Home";
-import DisplayRecipes from "./Components/DisplayRecipes/DisplayRecipes";
-import DisplayPantry from "./Components/DisplayPantry/DisplayPantry";
 import Footer from "./Components/Footer";
 import * as serviceWorker from "./serviceWorker";
 
 class RecipeApp extends React.Component {
   render() {
+    console.log("in index");
     return (
-      <Router>
-        <div id="app">
+      <div id="app">
+        <Router>
           <Route path="/" exact component={Login} />
-          <Route path="/home" exact render={props => <Home {...props} />} />
-
+          <Route path="/home" render={props => <Home {...props} />} />
           <Footer />
-        </div>
-      </Router>
+        </Router>
+      </div>
     );
   }
 }

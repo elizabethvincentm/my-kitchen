@@ -3,7 +3,6 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import "./recipe.css";
 import "../../index.css";
-import AppHeader from "../AppHeader";
 
 const setRecipeDisplay = str => {
   let curLink = document.querySelector(".active-display");
@@ -24,6 +23,12 @@ class Recipe extends React.Component {
     this.toggleRecipeDisplay = this.toggleRecipeDisplay.bind(this);
     this.recipeDisplay = this.recipeDisplay.bind(this);
     this.deleteRecipe = this.deleteRecipe.bind(this);
+  }
+  componentDidMount() {
+    console.log("receipepage mounted");
+  }
+  componentDidUpdate() {
+    console.log("receipepage updated");
   }
 
   toggleRecipeDisplay() {
@@ -53,6 +58,7 @@ class Recipe extends React.Component {
   }
   render() {
     let id = this.props.match.params.id;
+    let currentRecipe = this.props.data;
     return (
       <div id="recipe-page">
         <div className="actionbar">

@@ -1,6 +1,5 @@
 import React from "react";
 import "../../index.css";
-import AppHeader from "../AppHeader";
 
 export default class DisplayRecipes extends React.Component {
   render() {
